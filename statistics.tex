@@ -18,21 +18,34 @@ With $N$ independent measurements of the same physical quantity:
 \subsubsection{Error Propagation Rules}
 \begin{itemize}
     \item Assume $N$ independent measurements of the same physical quantity, to which $F$ is related by $F=F(x_1,x_2,...)$:\\
-    then the uncertainty in F is given by 
+    then the uncertainty in F is given by $\sigma_F^2=\sum_{i=1}^N\left(\frac{\partial F}{\partial x_i}\right)^2\sigma^2_{x_i}$
     \item Examples
     \begin{itemize}
-        \item Sum and differences
-        \item Multiplication by constant
-        \item Division by constant
-        \item Multiplication 
-        \item Division
-        \item Exponential
+        \item Sum and differences: $\sigma_{x+y}=\sigma_{x-y}=\sqrt{\sigma_x^2+\sigma_y^2}$
+        \item Multiplication and division by constant: $\sigma_{Kx}=K\sigma_x$
+        \item Multiplication: $\sigma_{x\cdot y}=(x\cdot y)\sqrt{\left(\sigma_x/x\right)^2+\left(\sigma_y/y\right)^2}$
+        \item Division: $\sigma_{x/y}=({x}/{y})\sqrt{\left(\sigma_x/x\right)^2+\left(\sigma_y/y\right)^2}$
+    \end{itemize}
+    \item Counting Rate ($R$)
+    \begin{itemize}
+        \item $R=n/T$ and $\sigma_n=\sqrt{n}\;\Rightarrow\;\sigma_R=\sqrt{n}/{T}=\sqrt{R/T}$
+        \item $R_S=R_{S+B}-R_B\;\Rightarrow\;\sigma_{R_S}=\sqrt{\frac{n_{S+B}}{T_{S+B}^2}+\frac{n_{B}}{T_{B}^2}}=\sqrt{\frac{R_{S+B}}{T_{S+B}}+\frac{R_B}{T_B}}$
     \end{itemize}
 \end{itemize}
-
 \subsubsection{Rounding of Values}
+Rounding to 1-2 significant figures in the uncertainty, demonstrated by the following examples:
+\begin{center}
+\begin{tabular}{c c c}
+    Raw value & $n=1$ & $n=2$\\
+    \hline
+    $5.73297251\pm0.01477602$ &  $5.73\pm0.01$ & $5.733\pm0.015$ \\
+    $314775089\pm4500284$ & $(3.15\pm0.05)\times10^8$ & $(3.148\pm0.045)\times10^8$ \\
+    $255\pm73$ & $(2.6\pm0.7)\times10^2$ & $255\pm73$
+\end{tabular}  
+\end{center}
 \subsection{Counting Statistics}
 \subsubsection{Statistical Models}
+
 \subsubsection{Confidence Limits}
 \subsubsection{The \texorpdfstring{$\chi^2$}{Chi-squared} Test}
 \subsubsection{Examples}

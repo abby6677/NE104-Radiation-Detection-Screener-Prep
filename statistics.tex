@@ -1,0 +1,41 @@
+\section{Uncertainty Analysis, Counting Statistics, and Detection}
+\subsection{Uncertainty Analysis}
+\subsubsection{Characterization of Data}
+With $N$ independent measurements of the same physical quantity:
+\begin{itemize}
+    \item Experimental mean: $\Bar{x_e}=\frac{1}{N}\sum_{i=1}^Nx_i$
+    \item Residual: $d_i=x_i-\Bar{x_e},\text{ with }\sum_{i=1}^Nd_i=0$
+    \item Deviation: $\epsilon_i=x_i-\Bar{x}$, note that $\Bar{x}$ is the true mean 
+    \item Sample variance: $s^2=\Bar{\epsilon^2}=\frac{1}{N}\sum_{i=1}^N(x_i-\Bar{x})^2=\frac{1}{N-1}\sum_{i=1}^N(x_i-\Bar{x_e})^2$
+    \item Standard Deviation: $\sigma^2=\frac{1}{N}\sum_{i=1}^N(x_i-\Bar{x})^2=\frac{1}{N-1}\sum_{i=1}^N(x_i-\Bar{x_e})^2$, or $\sigma^2\approx\Bar{x_i^2}-(\Bar{x_e})^2$\\
+    The standard deviation is also known as the external uncertainty in the mean.
+\end{itemize}
+\subsubsection{Types of Uncertainties}
+\begin{itemize}
+    \item Internal Uncertainty
+    \item External Uncertainty
+\end{itemize}
+\subsubsection{Error Propagation Rules}
+\begin{itemize}
+    \item Assume $N$ independent measurements of the same physical quantity, to which $F$ is related by $F=F(x_1,x_2,...)$:\\
+    then the uncertainty in F is given by 
+    \item Examples
+    \begin{itemize}
+        \item Sum and differences
+        \item Multiplication by constant
+        \item Division by constant
+        \item Multiplication 
+        \item Division
+        \item Exponential
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Rounding of Values}
+\subsection{Counting Statistics}
+\subsubsection{Statistical Models}
+\subsubsection{Confidence Limits}
+\subsubsection{The \texorpdfstring{$\chi^2$}{Chi-squared} Test}
+\subsubsection{Examples}
+\subsection{Detection}
+\subsubsection{Dead Time}
+\subsubsection{Decision Making}

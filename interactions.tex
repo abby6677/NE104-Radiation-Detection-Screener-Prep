@@ -26,7 +26,7 @@
     \item Heavy charged particles lose energy by
     \begin{itemize}
         \item Inelastic collisions with atomic electrons (most important)\\
-         Due to the large ratio of projectile and electron masses, there is minimum energy loss in each interaction, and the ions travel on straight lines, slowing down continuously.
+         Due to the large ratio of projectile and electron masses, there is minimum energy loss in each interaction, and the ions travel on straight lines, slowing down continuously. The ion path length is equal to its range.
         \item Elastic scattering with nuclei
         \item Bremsstrahlung 
     \end{itemize}
@@ -71,11 +71,36 @@
 \end{itemize}
 
 \subsection{Interactions of Electrons}
-
 \subsubsection{Energy loss behavior}
-
+\begin{itemize}
+    \item Electrons can lose a lot more energy in one collision with atomic electrons, and interactions with atomic nuclei that occasionally happen can significantly change the direction of their course. 
+    \item In addition to Coulombic interactions, electron also lose energy via radiative processes (Bremsstralung).
+    \begin{itemize}
+        \item[] $\frac{dE}{dx}=\left(\frac{dE}{dx}\right)_C+\left(\frac{dE}{dx}\right)_R$
+        \item[] $S_\text{Radiative}/S_\text{Collision}\approx 
+    (E\;[MeV]\times Z)/700$
+    \end{itemize}
+    \item $\left(\frac{dE}{dx}\right)_C$ is formulated similar to the Bethe formula; by comparing them, it can be shown that the stopping power of heavy charged particles are larger mainly because of their lower velocities. 
+\end{itemize}
 \subsubsection{Range}
-
+\begin{itemize}
+    \item The electron path length $\gg$ its range (see figure~\ref{fig:range_vs_pathlength} for visualization)
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.55\textwidth]{images/range_vs_pathlength.png}
+        \caption{Tracks of heavy charged particles and electrons.}
+        \label{fig:range_vs_pathlength}
+    \end{figure}
+    \item The unit of range is the unit of mass thickness, $[g/cm^2]$
+    \item For fast electrons, the extrapolated range is being used to express range and can be used to estimate their energies. See figure~\ref{fig:electron_range} for the difference between mean and extrapolated ranges.
+    \item Comparing the range of charged particles, the ranges go as followed: electron $>$ proton $>$ deuteron $>$ alpha.
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.55\textwidth]{images/electron_range.png}
+    \caption{Mean range vs. extrapolated range.}
+    \label{fig:electron_range}
+\end{figure}
 \subsection{Interactions of Photons}
 \subsubsection{Photon attenuation}
 When a photon beam passes through material, its intensity drops but the energy remains constant.\\

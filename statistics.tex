@@ -3,17 +3,23 @@
 \subsubsection{Characterization of Data}
 With $N$ independent measurements of the same physical quantity:
 \begin{itemize}
-    \item Experimental mean: $\Bar{x_e}=\frac{1}{N}\sum_{i=1}^Nx_i$
-    \item Residual: $d_i=x_i-\Bar{x_e},\text{ with }\sum_{i=1}^Nd_i=0$
-    \item Deviation: $\epsilon_i=x_i-\Bar{x}$, note that $\Bar{x}$ is the true mean 
-    \item Sample variance: $s^2=\Bar{\epsilon^2}=\frac{1}{N}\sum_{i=1}^N(x_i-\Bar{x})^2=\frac{1}{N-1}\sum_{i=1}^N(x_i-\Bar{x_e})^2$
-    \item Standard Deviation: $\sigma^2=\frac{1}{N}\sum_{i=1}^N(x_i-\Bar{x})^2=\frac{1}{N-1}\sum_{i=1}^N(x_i-\Bar{x_e})^2$, or $\sigma^2\approx\Bar{x_i^2}-(\Bar{x_e})^2$\\
+    \item Experimental mean: $\overline{x_e}=\frac{1}{N}\sum_{i=1}^Nx_i$
+    \item Residual: $d_i=x_i-\overline{x_e},\text{ with }\sum_{i=1}^Nd_i=0$
+    \item Deviation: $\epsilon_i=x_i-\overline{x}$, note that $\overline{x}$ is the true mean 
+    \item Sample variance: $s^2=\overline{\epsilon^2}=\frac{1}{N}\sum_{i=1}^N(x_i-\overline{x})^2=\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x_e})^2$
+    \item Standard Deviation: $\sigma^2=\frac{1}{N}\sum_{i=1}^N(x_i-\overline{x})^2=\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x_e})^2$, or $\sigma^2\approx\overline{x_i^2}-(\overline{x_e})^2$\\
     The standard deviation is also known as the external uncertainty in the mean.
 \end{itemize}
-\subsubsection{Types of Uncertainties}
+\subsubsection{Internal and External Uncertainties}
 \begin{itemize}
-    \item Internal Uncertainty
-    \item External Uncertainty
+    \item The uncertainty in the mean (internal uncertainty) is $\sigma_{\text{internal}}=\sigma/\sqrt{N}$
+    \item Assuming different uncertainties $\sigma_i$ for $x_i$:
+    \begin{itemize}
+        \item The weighted mean $\overline{x_w}=\left(\sum_{i=1}^Nx_i\right)/\left(\sigma_i^2\sum_{i=1}^N1/\sigma_i^2\right)$
+        \item The error in the weighted mean $\sigma_{\text{internal}}=1/\sqrt{\sum_{i=1}^N1/\sigma_i^2}$\\, or $\left(1/\sigma_\text{internal}^2\right)=\sum_{i=1}^N\left(1/\sigma_{x_i}^2\right)$
+        \item The external uncertainty $\sigma_\text{external}=\sigma_\text{internal}\sqrt{\frac{\sum(x_i-\overline{x})^2/\sigma_i^2}{N-1}}$
+    \end{itemize}
+    
 \end{itemize}
 \subsubsection{Error Propagation Rules}
 \begin{itemize}
@@ -28,8 +34,8 @@ With $N$ independent measurements of the same physical quantity:
     \end{itemize}
     \item Counting Rate ($R$)
     \begin{itemize}
-        \item $R=n/T$ and $\sigma_n=\sqrt{n}\;\Rightarrow\;\sigma_R=\sqrt{n}/{T}=\sqrt{R/T}$
-        \item $R_S=R_{S+B}-R_B\;\Rightarrow\;\sigma_{R_S}=\sqrt{\frac{n_{S+B}}{T_{S+B}^2}+\frac{n_{B}}{T_{B}^2}}=\sqrt{\frac{R_{S+B}}{T_{S+B}}+\frac{R_B}{T_B}}$
+        \item[] $R=n/T$ and $\sigma_n=\sqrt{n}\;\Rightarrow\;\sigma_R=\sqrt{n}/{T}=\sqrt{R/T}$
+        \item[] $R_S=R_{S+B}-R_B\;\Rightarrow\;\sigma_{R_S}=\sqrt{\frac{n_{S+B}}{T_{S+B}^2}+\frac{n_{B}}{T_{B}^2}}=\sqrt{\frac{R_{S+B}}{T_{S+B}}+\frac{R_B}{T_B}}$
     \end{itemize}
 \end{itemize}
 \subsubsection{Rounding of Values}
@@ -45,10 +51,48 @@ Rounding to 1-2 significant figures in the uncertainty, demonstrated by the foll
 \end{center}
 \subsection{Counting Statistics}
 \subsubsection{Statistical Models}
-
+\begin{itemize}
+    \item Binomial distribution
+    \begin{itemize}
+        \item The most general of all listed here. Given probability $p$ of an event in a single trial, the probability of $x$ events in $n$ trials is given by\\
+        $P(x)=\frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}$
+        \item[] $\overline{x}=np$
+        \item[] $\sigma^2=np(1-p)=\overline{x}(1-p)$
+        \item[] $\sum_{x=0}^nP(x)=1$
+        \item Though computationally intensive, radioactive decay can be described with a very large $n$ and $p=1-\exp(-\lambda t)$
+    \end{itemize}
+    \item Poisson distribution
+    \begin{itemize}
+        \item If $p$ of the binomial distribution is small and constant ($p\ll1$), it can be reduced to the Poisson distribution. For example, when a count interval is short compared with the half-life of the source.
+        \item[] $P(x)=\frac{(\overline{x})^xe^{-\overline{x}}}{x!}$
+        \item[] $\overline{x}=np$
+        \item[] $\sigma^2=np=\overline{x}$
+        \item[] $\sum_{x=0}^nP(x)=1$
+        \item Note that to characterize a Poisson distribution, only one parameter is needed, that is the product of $n$ and $p$. With only the mean value of the distribution ($\overline{x}$), the entire distribution can be constructed.
+    \end{itemize}
+    \item Normal distribution
+    \begin{itemize}
+        \item If in addition to $p\ll1$, the mean value of the distribution is large enough ($np\gg1$), the distribution can be further simplified to a normal (Gaussian) distribution.
+        \item[] $P(x)=\frac{1}{\sqrt{2\pi\overline{x}}}\exp\left(-\frac{(x-\overline{x})^2}{2\overline{x}}\right)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(x-\overline{x})^2}{2\sigma^2}\right)$
+        \item[] $\overline{x}=np$
+        \item[] $\sigma^2=np=\overline{x}$
+        \item[] $\sum P(x)=1$
+    \end{itemize}
+\end{itemize}
 \subsubsection{Confidence Limits}
+\begin{itemize}
+    \item Estimation of the precision of a single measurement
+    \item Confidence limits
+\end{itemize}
 \subsubsection{The \texorpdfstring{$\chi^2$}{Chi-squared} Test}
 \subsubsection{Examples}
+\begin{enumerate}
+    \item A series of measurements
+    \item Data with different errors
+    \item Count rates
+    \item Consecutive counting
+    \item The null Experiment
+\end{enumerate}
 \subsection{Detection}
 \subsubsection{Dead Time}
 \subsubsection{Decision Making}

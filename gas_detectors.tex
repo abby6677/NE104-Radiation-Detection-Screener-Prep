@@ -90,12 +90,40 @@ As shown in figure~\ref{fig:gas_detector_operation_modes}, from low to high volt
     \label{fig:ion_chamber_saturation_current}
 \end{figure}
 \subsubsection{Pulse Mode Operation}
-
+{\color{red} This section still needs to be done!!!}
 \subsubsection{Energy Resolution and the Fano Factor}
+{\color{red} This section still needs to be done!!!}\\
 Note that the following calculation methods of energy resolution and the usage of the Fano factor are not exclusive to the context of pulse-mode ionization chambers, but will be applied in future chapters, too. 
 \subsection{Proportional Counter}
 \subsubsection{Operation}
-
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/townsend_coefficient.png}
+    \caption{Townsend coefficient for gas, $\alpha$.}
+    \label{fig:townsend_coefficient}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/Cylindrical_prop_counter.png}
+    \caption{Cylindrical proportional counters geometry and electric field.}
+    \label{fig:Cylindrical_prop_counter}
+\end{figure}
+\begin{itemize}
+    \item Proportional counters are usually operated in pulse mode and rely on gas multiplication to amplify charges. Multiplication depends strongly on electric field. 
+    \item Townsend avalanches are what allow gas multiplication. Since free electrons are easily accelerated, high electric fields can increase their energy to the degree where they can further ionize neutral molecules during collisions (secondary ionization). The electrons liberated by the secondary ionization process can also be accelerated further and ionize other neutral molecules, leading to a cascade known as a Townsend avalanche. The avalanche terminates when all free electrons are captured at the anode. 
+    \item Since each primary electron leads to an independent avalanche, and all avalanches are nearly identical, the collected charges remains proportional to the number of original electrons while the charge is being amplified by thousands of times. 
+    \item The fractional increase in the number of electrons per unit path length is governed by the Townsend equation:\\
+    $dn/n=\alpha\;dx$, where $\alpha$ is the first Townsend coefficient for gas. As shown in figure~\ref{fig:townsend_coefficient}, $\alpha$ is $0$ when the electric field is below a certain threshold and generally increases when above.\\
+    In the case of a spatially constant electric field (e.g. parallel plate), $\alpha$ is constant and $n(x)=n_0e^{\alpha x}$; the density of electrons grows exponentially with distance as the avalanche progresses.
+    \item Cylindrical geometries are used in most proportional counters to create high electric fields:\\
+    $E(r)={V_0}/[r{\ln(b/a)}]$\\
+    ,where $a$ is the anode wire radius and $b$ is the cathode inner radius.\\
+    There are two reasons why this geometry is preferred (see figure~\ref{fig:Cylindrical_prop_counter}):
+    \begin{itemize}
+        \item As can be seen in this expression, the electric field can have a really large value in the vicinity of the anode, to which the electrons are attracted. Using the Townsend equation, since the electric field (and hence $\alpha$) increases in the direction that the avalanche progresses, the growth of electron density is even steeper than in the constant electric field case. The avalanches occur within a few wire diameters of the anode.
+        \item To make sure multiplication is uniform, the region of gas multiplication has to be small compared to the total gas volume. With this geometry, the gas multiplication region is confined to the vicinity of the anode. The primary electrons mostly form outside the multiplication region then drift to the multiplication region, ensuring the multiplication factor to be equal for all ion pairs. 
+    \end{itemize}
+\end{itemize}
 \subsubsection{Fill Gas and Quenching}
 
 \subsubsection{Applications}

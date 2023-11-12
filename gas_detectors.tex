@@ -125,11 +125,42 @@ Note that the following calculation methods of energy resolution and the usage o
     \end{itemize}
 \end{itemize}
 \subsubsection{Fill Gas and Quenching}
-
+\begin{itemize}
+    \item To avoid the formation negative ions and due to the low working voltage, noble gases are usually used as fill gases for proportional counters. Noble gases can reach up to $10^3$ gain before continuous discharge.
+    \item In addition to secondary ionization, molecule excitation can also occur and create photons when the molecule de-excites. These photons reduce proportionality (and space resolution for position-sensitive counters) and are hence not preferred. A quench gas (polyatomic gas) such as methane is used when the gas multiplication is high.  
+    \item The most common combination is the P10 gas, a mixture of 90\% Ar and 10\% methane, which can provide gains of up to $10^6$.
+\end{itemize}
 \subsubsection{Applications}
-
+The proportional counter is used for:
+\begin{itemize}
+    \item X-ray and electron spectroscopy
+    \item Charged particle detection
+    \item Discrimination of $\beta$ particles, $\alpha$ particles and fission fragments (superseded by semiconductor detectors)
+    \item $2\pi$ and $4\pi$ internal flow counters
+    \item Neutron detectors (fill gas $BF_3$ and $^3He$)
+    \item Position-sensitive detectors (PPAC, MWPC, TPC,...)
+\end{itemize}
 \subsection{Geiger-Müller Counter}
 \subsubsection{Operation}
+\begin{itemize}
+    \item Like a proportional counter, a GM counter functions based on gas multiplication. As mentioned in section 6.3.2, free electrons can excite neutral molecules and induce photon production. These photons can undergo photoelectric absorption and create further avalanches. When the electric field is high, the number of excited molecules is much higher than in the proportional region, and Geiger discharge occurs, where an exponentially growing number of avalanches can be created before eventually terminated.
+    \item As opposed to a typical Townsend avalanche, in a Geiger discharge, the rapid propagation of the chain reactions leads to avalanche initiations at random radial positions along the wire, as shown in figure~\ref{fig:geiger_discharge}. The Geiger discharge grows to envelope the entire anode wire, regardless of the location of the primary event. 
+    \item Geiger discharge is terminated by the buildup of space charges. Since for every free electron produced, a positive ion is produced,  when their concentration is sufficiently high, they can reduce the electric field enough to terminate the multiplication process. 
+    \item For a fixed applied voltage, the same density of positive ions is needed to reduce the electric field to below the critical value, no matter what the number of original ion pairs is. The amplitude of the pulses therefore gives no (energy) information of the incident radiation. 
+    \item Raising the applied voltagee increases the magnitude of the Geiger discharge and the amplitude of the output signal increases (independent of energy deposited). With a fixed discriminator threshold, higher amplitudes imply higher count rates. 
+    \item While being inexpensive and easy to use (large signal outputs), Geiger counters provide no energy information and has unusually large dead times ($100\mu s$, very long compared to other detectors). It can be used as a survey meter, or for detection of charged particles when no energy information is needed.
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/geiger_discharge.png}
+    \caption{Geiger discharge.}
+    \label{fig:geiger_discharge}
+\end{figure}
 \subsubsection{Fill Gas and Quenching}
-\subsubsection{Applications}
+\begin{itemize}
+    \item Since GM counters also rely on gas multiplication as in proportional counters, same requirements for fill gases have to be fulfilled; noble gases are usually used. 
+    \item Quench gases in GM counters serve a different purpose from those in proportional counters. When a positive ion arrives at the cathode, they are neutralized by combining with an electron from the cathode surface. If the energy liberated in this process exceeds the work function of the cathode, another free electron can emerge. This can lead to multiple pulsing. 
+    \item By adding a quench gas of lower ionization energy and a complex molecular structure (e.g., $C_2H_5OHChap$), multiple pulsing can be prevented by the charge transfer collisions between the positive ions with the quench gas. If the concentration of the quench gas is high enough, all the ions that arrive at the cathode will be of the quench gas, and the energy created during their neutralization would go to the dissociation of the complex quench gas molecules instead of the liberation of an electron.  
+\end{itemize}
+
 \subsection{Position-Sensitive Detection}

@@ -1,5 +1,4 @@
 \section{Pulse Processing Electronics}
-{\color{red} This section still needs to be done!!!}
 \subsection{General Concepts}
 \begin{itemize}
     \item In the context of this course, signal amplification and shaping is done in analog then converted to digital  
@@ -60,7 +59,8 @@
 \begin{enumerate}
     \item General function:
     \begin{itemize}
-        \item 
+        \item Increases the amplitude of the signal to a convenient voltage for a discriminator, pulse-height analyze, or other pulse-processing units
+        \item Shapes the signal by filtering high and low frequency noise and shortens the long pulse tail to avoid pile-up
     \end{itemize}
     \item Pulse-processing
     \begin{enumerate}
@@ -83,7 +83,6 @@
             \item For large $\tau$ (slow electronics), $\frac{V_{in}}{\tau}\approx \frac{dV_{out}}{dt}\;\Rightarrow\;\frac{1}{\tau}\int V_{in}dt\approx V_{out}$\\
             The integrator removes high frequency components and is called a low-pass filter.
         \end{itemize}
-        \item 
     \end{enumerate} 
 \end{enumerate}
 \begin{figure}[ht]
@@ -92,9 +91,112 @@
     \caption{The CR (left) and RC (right) circuits.}
     \label{fig:RC_CR_circuits}
 \end{figure}
-
-\subsubsection{Other Components}
-
 \subsection{Measurements of Interest}
 \subsubsection{Energy Measurement}
+\begin{itemize}
+    \item General concept
+    \begin{itemize}
+        \item Assuming voltage amplitude to be proportional to energy deposition in a detector, we would like to determine the amplitude as accurately as possible
+        \item Uncertainties arise from 
+        \begin{itemize}
+            \item[(a)] Noise from the detector, readout, and electronics
+            \item[(b)] The charge creation and collection process, which are energy and position dependant
+            \item[(c)] Electronics ``drift''
+        \end{itemize}
+        \item To achieve accuracy, we filter/ perform shaping of the preamplifier output signals to reduce noise without attenuating important signal features
+        \item Filtering can either be done in the analog domain (e.g., with a CR-(RC)$^n$ filter) or in the digital domain (e.g., with a trapezoidal filter)
+    \end{itemize}
+    \item Electronic noise\\
+    See figure~\ref{fig:log_noise}.
+    \begin{enumerate}
+        \item Series (voltage) noise:\\
+        Johnson noise (intrinsic noise from Brownian thermal motion) associated with series resistance and thermal noise of the input FET in the detection system. 
+        \item Parallel (current) noise:\\
+        Fluctuations in the surface and bulk leakage currents
+        \item 1/f noise:\\
+        Capture and release of charges in the input FET, independent of frequency and shaping time.
+    \end{enumerate}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/log_noise.png}
+        \caption{Noise vs. shaping time plot. ENC stands for equivalent noise charge.}
+        \label{fig:log_noise}
+    \end{figure}
+    \item CR-(RC)$^n$ shaping
+    \begin{itemize}
+        \item By adding several RC circuits after CR circuits, the signal-to-noise ratio can be optimized (e.g., approximate Gaussian shaping). Typically, $\tau_{CR}=\tau_{RC}$ .
+        \item Since the preamplifier output signal is not a step function but has finite decay time, the RC-CR generally creates an undershoot in the amplifier output. This can be compensated by pole-zero cancellation. 
+        \item To avoid pile-up, one would generally like to keep shaping times short so that the shaped waveform can return to the baseline as quickly as possible.
+        \item However, only by keeping the shaping time long compared to the charge collection time in the detector, can we avoid ballistic deficits. Ballistic deficits are caused by variations in rise-time, possibly due to position-dependent charge collection behavior. For these types of detectors, pulse shaping methods that lead to a shaped pulse with a flat top (e.g. trapezoidal shaping) would be favored. 
+    \end{itemize}
+\end{itemize}
 \subsubsection{Time Measurement}
+\begin{itemize}
+    \item General concepts:
+    \begin{itemize}
+        \item To determine arrival time of radiation
+        \item There are three types of uncertainties (see figure~\ref{fig:time_measurement_unc}):
+        \begin{itemize}
+            \item[(a)] Detector-intrinsic signal rise time (response time)
+            \item[(b)] Jitter: Variations with fixed amplitude (noise)
+            \item[(c)] Walk: Variations in signals and in rise times (position and energy dependant)
+        \end{itemize}
+        \item Mostly based on trigger-level crossing resulting in a logic pulse whose time reflects the arrival time
+    \end{itemize}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/time_measurement_unc.png}
+        \caption{Various types of uncertainties in time measurements.}
+        \label{fig:time_measurement_unc}
+    \end{figure}
+    \item Leading edge triggering
+    \begin{itemize}
+        \item Shown in figure~\ref{fig:time_measurement_unc}, it is the simplest and most direct time pick-off method.
+        \item Time is determined to be when the signal crosses a fixed discriminator threshold (leading edge discriminator).
+        \item A low threshold would minimize walk, a high threshold at steepest slope of the signal would minimize jitter.
+    \end{itemize}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/constant_fraction_discriminator.png}
+        \caption{The constant fraction time pick-off method.}
+        \label{fig:constant_fraction_discriminator}
+    \end{figure}
+    \item Constant fraction discriminator
+    \begin{itemize}
+        \item An enhancement of leading edge triggering, see figure~\ref{fig:constant_fraction_discriminator} for its time pick-off method. 
+        \item The threshold is a constant fraction of the signal amplitude; time pick-off is independent of walk.
+        \item For semiconductor detectors, $f\approx0.2$ and $t_d\approx50\;ns$. (See figure~\ref{fig:constant_fraction_discriminator} for definitions of $f$ and $t_d$.)
+    \end{itemize}
+    \item Implementation
+    \begin{itemize}
+        \item Multichannel time spectroscopy (prompt and chance coincidence spectra): \\
+        The simplified setup and the corresponding time spectrum is shown in figure~\ref{fig:prompt_and_chance_coincidence}.
+        \item Assuming that the isotope emits at least two radiations in true coincidence, these true coincidence events will appear in the same region of the time spectrum, producing a prompt coincidence peak. 
+        \item Without the fixed delay, we would only be able to see half of the peak (since it would be centered at 0). The width of the peak is decided by the walk and jitters of the system. 
+    \end{itemize}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.7\textwidth]{images/prompt_and_chance_coincidence.png}
+        \caption{Multichannel time spectroscopy using coincidence radiation. TAC stands for ``time-to-amplitude converter'', which produces an output pulse with an amplitude proportional to the time interval between input ``start'' and ``stop'' pulses.}
+        \label{fig:prompt_and_chance_coincidence}
+    \end{figure}
+\end{itemize}
+\subsection{Other Components}
+\begin{itemize}
+    \item Coaxial cables
+    \begin{itemize}
+        \item Cables should be terminated with load $R$ equal to the impedence of the cable; an open cable results in positive reflection, and a shorted cable results in negative reflection.
+    \end{itemize}
+    \item Pulse attenuators and splitters
+    \item Pulse generators
+    \item For spectrum enhancement:
+    \begin{itemize}
+        \item Pulse-shape discrimination
+        \item Pile-up rejection
+        \item Baseline restoring
+        \item SCA (single-channel analyzers)
+        \item MCA (multi-channel analyzers)
+        \item Coincidence units
+        \item TAC
+    \end{itemize}
+\end{itemize}

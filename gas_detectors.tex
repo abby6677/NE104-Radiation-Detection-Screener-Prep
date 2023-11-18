@@ -90,12 +90,69 @@ As shown in figure~\ref{fig:gas_detector_operation_modes}, from low to high volt
     \label{fig:ion_chamber_saturation_current}
 \end{figure}
 \subsubsection{Pulse Mode Operation}
-{\color{red} This section still needs to be done!!!}
-
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/gas_detector_pulse_mode.png}
+    \caption{Pulse-mode operation of gas detectors.}
+    \label{fig:gas_detector_pulse_mode}
+\end{figure}
+\begin{itemize}
+    \item In current mode, the average rate of ion formation within the chamber is measured. In pulse mode, each separate radiation quantum gives rise to a distinguishable signal pulse. 
+    \item Derivation of pulse shape (see figure~\ref{fig:gas_detector_pulse_mode}):
+    \begin{itemize}
+        \item[] $i=\frac{q_0}{V_{ch}}(v_+E_++v_-E_-)$ (see section 6.2.1 for derivation of this equation)
+        \item[] $i=\frac{dQ}{dt}=\frac{CdV_R}{dt}$ , and $E=\frac{V_{ch}}{d}=const.$
+        \item[] $\Rightarrow\;dV_R=\frac{q_0}{Cd}(v_+dt+v_-dt)$ and $v\;dt=dx$
+        \item[] $\Rightarrow\;V_{max}=\frac{q_0}{C}$
+    \end{itemize}
+    \item If a signal were to accurately reflect the total contribution of both ion and electron collections, the ion chamber will be restricted to very low pulse rates. (See figure~\ref{fig:gas_detector_pulse_Vmax}) To minimize dead time, the external RC time is reduced to only be sensitive to the fast electron component. However, in electron sensitive operation the amplitude depends on position of interaction.  
+    \begin{itemize}
+        \item[] $V_{max}=\frac{q_0}{C}\frac{x_-}{d}$
+    \end{itemize}
+    \item To remove the aforementioned position dependence, a Frisch grid can be incorporated, as shown in figure~\ref{fig:Frisch_grid}. The signal would be only dependant on the electron drift between the grid and the anode. 
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/gas_detector_pulse_Vmax.png}
+    \caption{Signal is dependant on position and charge collection time.}
+    \label{fig:gas_detector_pulse_Vmax}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Frisch_grid.png}
+    \caption{Incorporation of a Frisch grid in an ion chamber.}
+    \label{fig:Frisch_grid}
+\end{figure}
 \subsubsection{Energy Resolution and the Fano Factor}
-{\color{red} This section still needs to be done!!!}\\
 Note that the following calculation methods of energy resolution and the usage of the Fano factor are not exclusive to the context of pulse-mode ionization chambers, but will be applied in future chapters, too.
-
+\begin{itemize}
+    \item W-value:
+    \begin{itemize}
+        \item To generate an ion-electron pair, at least the ionization energy needs to be transferred by the incident particle.
+        \item Since other methods of energy loss exists, the mean energy for ion-electron pair creation (W-value) is always higher than the ionization energy.
+        \item The pulse amplitude $\propto$ the number of ion pairs $\propto$ the energy of the incident particle
+    \end{itemize}
+    \item Energy resolution:
+    \begin{itemize}
+        \item Fluctuations in the mean number of ion pairs formed for incident particles of identical energy creates a fundamental limit on the achievable energy resolution.
+        \item In its simplest form, the formation of each ion pair can be considered a Poisson process; however, since the formation of each individual charge carrier is not independent (e.g. total energy from incident particle is fixed, other interaction and energy loss mechanisms exist), the true behavior deviates from this simple description. 
+    \end{itemize}
+    \item Fano factor:
+    \begin{itemize}
+        \item The Fano factor reflects the fraction of all incident particle energy that is converted into information carriers within the detector. \\
+        $F=\text{observed variance}/\text{Poisson variance}$\\
+        If the entire energy is converted into ion pairs, the would be no statistical fluctuations: $F=0$\\
+        If only a small fraction of energy is converted into ion pairs, the formation would be described by a Poisson distribution: $F=1$
+        \item For gases, $F\approx0.2\sim0.4$
+    \end{itemize}
+    \item FWHM calculation:
+    \begin{itemize}
+        \item[] Number of ion pairs: $N=E/W$
+        \item[] $\sigma^2=F\times N$ and $\sigma/N=\sqrt{F/N}$
+        \item[] $\Delta E=2.35\times W\times \sigma=2.35\times W\times\sqrt{FN}=2.35\sqrt{FWE}$
+        \item[] And $\Delta E/E=2.35\sqrt{FW/E}$
+    \end{itemize}
+\end{itemize}
 \subsection{Proportional Counter}
 \subsubsection{Operation}
 \begin{figure}[ht]

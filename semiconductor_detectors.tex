@@ -55,6 +55,11 @@
         \hline
         \end{tabular}
     \end{center}
+    \item Semiconductor diode detectors, however, are limited by the following:
+    \begin{itemize}
+        \item Trapping and recombination centers lead to partial charge carrier loss and degradation in energy resolution
+        \item Pulse height defects for heavy charged particles (e.g. fission fragments), due to energy loss in the entrance window and the dead layer, the competition between nuclear and electronic processes at decreased velocities, and the high electron-hole recombination rate in the plasma created along (especially at the end of) the ion track. 
+    \end{itemize}
 \end{itemize}
 \subsubsection{Lattice, Intrinsic Carrier Density,  Mobility, and Resistivity}
 \begin{itemize}
@@ -193,8 +198,15 @@
     \label{fig:SiLi_Detector}
 \end{figure}
 \begin{itemize}
+    \item Si detectors can be favored over Ge detectors in certain areas, despite its lower Z implying a smaller photoelectric cross section for typical gamma energies:
+    \begin{itemize}
+        \item Very low energy gamma or X-ray detection:\\
+        In this region, the probability for photoelectric absorption can be reasonably high even for Si detectors of a few millimeters in thickness. The fact that X-ray escape peaks from silicon are less prominent than in germanium and that transparency to high energy gammas when low-energy photons are of interest makes Si(Li) detectors a common choice in low-energy photon spectrometry (LEPS) systems. 
+        \item Detection and spectroscopy of beta particles or other externally incident electrons:\\
+        The lower Z of Si means that fewer electrons will backscatter from the detector without full energy deposition. 
+    \end{itemize}
     \item Intrinsic high-purity Si detectors have limited thickness of $<2$ mm due to a minimum impurity concentration of $\sim10^{12}\;\text{cm}^{-3}$ (due to the crystal growth process) and a maximum applicable voltage of $<2000$ V (leakage current degrades energy resolution). 
-    \item Li-drifting in p-type Si compensates the impurities. 
+    \item Li-drifting in p-type Si compensates the impurities. As shown in figure~\ref{fig:SiLi_Detector}, a p-i-n junction is formed once the drifting is completed. The excess Li at the surface which the drift was started forms a n+ electrical contact. The non-compensated p region at the opposite end is often given a metallic coating that acts as an ohmic contact. 
 \end{itemize}
 \subsubsection{Si Detector Applications}
 \begin{itemize}

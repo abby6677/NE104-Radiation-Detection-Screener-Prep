@@ -220,9 +220,118 @@
 
 \subsection{Ge Detectors}
 \subsubsection{Overview}
+\begin{itemize}
+    \item Ge has a smaller band gap (0.7 eV) than Si (1.1 eV).
+    \item Ge has a higher density and higher Z than Si.
+    \item Low impurities in Ge allows much larger volumes to be depleted.
+\end{itemize}
 \subsubsection{Planar and Coaxial Configurations}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/HPGe_planar_config.png}
+    \caption{Planar configuration of HPGe detectors.}
+    \label{fig:HPGe_planar_config}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/HPGe_cylindrical_config.png}
+    \caption{Coaxial configuration of HPGe detectors. Note that $\nu$ and $\pi$ are used to represent the high purity of n- and p-type material respectively.}
+    \label{fig:HPGe_cylindrical_config}
+\end{figure}
+\begin{enumerate}
+    \item Planar HPGe detectors:
+    \begin{enumerate}
+        \item Configuration:
+        \begin{itemize}
+            \item See figure~\ref{fig:HPGe_planar_config}. The bulk of the detector is either p-type or n-type.
+            \item The electrical n+ contact is usually made by Li diffusion (thick), and the p+ contact is usually made by B implantation (thin). 
+            \item If the bulk of the detector is a n-type crystal, the p+ contact is the rectifying contact; if the bulk of the detector is a p-type crystal, the n+ contact is the rectifying contact. 
+        \end{itemize}
+        \item Electric field and capacitance:
+        \begin{itemize}
+            \item Depletion depth $d=\left(\frac{2\epsilon V}{\rho}\right)^{1/2}$, where $\epsilon$ is the dielectric constant and $\rho$ is the charge density.
+            \item Depletion voltage $V_d=\frac{\rho T^2}{2\epsilon}$ for slab thickness $T$
+            \item With Poisson's equation $\frac{d^2\phi}{dx^2}=-\frac{\rho}{\epsilon}$ and the boundary condition $\phi(d)-\phi(0)=V$,
+            \item[] the electric field $E=-\frac{d\phi}{dx}=\frac{V}{d}+\frac{\rho}{\epsilon}\left(\frac{d}{2}-x\right)$
+            \item Capacitance $C=\left(\frac{\epsilon\rho}{2V}\right)^{1/2}$ for $V<V_d$;
+            \item[] for $V>V_d$, $C=\left(\frac{\epsilon\rho}{2V_d}\right)^{1/2}=\text{constant}$
+        \end{itemize}
+    \end{enumerate}
+    \item Coaxial HPGe detectors:
+    \begin{enumerate}
+        \item Configuration:
+        \begin{itemize}
+            \item See figure~\ref{fig:HPGe_cylindrical_config}. Generally, the bulletized closed-ended coaxial configuration is preferred. It provides a planar front surface where leakage currents do not have to be dealt with; bulletizing (rounding the front corners of the crystal and hole) and extending the hole to reach close to the front surface help keep the field lines as nearly radial as possible. 
+            \item Similar to what is discussed for the planar configuration, the crystal could be either $\pi$-type or $\nu$-type. 
+        \end{itemize}
+        \item Electric field and capacitance:
+        \begin{itemize}
+            \item Depletion voltage $V_d=\frac{\rho}{2\epsilon}[r_i^2\ln(r_o/r_i)-\frac{1}{2}(r_o^2-r_i^2)]$
+            \item Electric field $E(r)=\frac{\rho}{2\epsilon}r-\frac{[V+(\rho/4\epsilon)(r_o^2-r_i^2)]}{r\ln(r_o/r_i)}$
+            \item Capacitance per unit length $C=\frac{2\pi\epsilon}{\ln(r_o/r_i)}$
+        \end{itemize}
+    \end{enumerate}
+\end{enumerate}
 \subsubsection{Energy Spectra and Efficiency}
+\begin{enumerate}
+    \item Characteristic features of a Ge energy spectrum:
+    \begin{itemize}
+        \item Full-energy peak: $E_\gamma$
+        \item Compton background (continuum)
+        \item Compton edge: $E_{e-}(\theta=\pi)=E_\gamma-E_\text{backscatter}$\\
+        Note that since Compton scattering is an interaction with electrons, the position of the Compton edge is at the same energy for all detector types.
+        \item Compton backscatter: $E_\text{backscatter}=E_\gamma/(1+2E_\gamma/m_ec^2)$
+        \item Single escape peak: $E_\gamma-511\;keV$
+        \item Double escape peak: $E_\gamma-1022\;keV$
+        \item Sum peaks from pile-up
+        \item Annihilation peak: $E=511\;keV$
+    \end{itemize}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/intrinsic_pn_efficiency.png}
+        \caption{The efficiency difference at low energies arises because of the thick outer contact of p-type crystals contrasted with a thin contact on n-type crystals. Low-energy photons are absorbed in the dead layer when entering a p-type crystal. A notch in the curve for n-type crystals can be seen at 11 keV; this is the K-shell binding energy of Ge.}
+        \label{fig:intrinsic_pn_efficiency}
+    \end{figure}
+    \item Efficiency:
+    \begin{itemize}
+        \item Absolute full-energy (peak) efficiency:
+        \begin{itemize}
+            \item[] $\epsilon_\text{abs}=\frac{\text{counts in photopeak}}{\text{number of gamma rays emitted by source}}=\epsilon_\text{int}\times\epsilon_\text{geo}$
+        \end{itemize}
+        \item Intrinsic full-energy (peak) efficiency:
+        \begin{itemize}
+            \item[] $\epsilon_\text{int}=\frac{\text{counts in photopeak}}{\text{number of gamma rays incident on detector}}$
+            \item See figure~\ref{fig:intrinsic_pn_efficiency} for discussion on differences between p- and n-type detectors.
+        \end{itemize}
+        \item Geometric efficiency:
+        \begin{itemize}
+            \item[] $\epsilon_\text{geo}=\frac{1}{2}\left(1-\frac{d}{\sqrt{d^2+a^2}}\right)$, where $d$ is distance $a$ is detector radius
+        \end{itemize}
+        \item Relative full-energy (peak) efficiency:
+        \begin{itemize}
+            \item Relative to a $3''\times3''$ NaI(Tl) detector, generally for $E_\gamma=1332.5\;keV$ of Co-60, at a distance of 25 cm. 
+            \item[] $\epsilon_\text{abs}(\text{NaI})=1.2\times10^{-3}$, $\epsilon_\text{int}(\text{NaI})=0.210$
+        \end{itemize}
+        \item Peak-to-total ratio:
+        \begin{itemize}
+            \item[] $r=\frac{\text{counts in photopeak}}{\text{total counts on the entire spectrum}}=\frac{\epsilon_\text{peak}}{\epsilon_\text{total}}$
+            \item A good detector has $r\sim0.6$
+        \end{itemize}
+        \item Peak-to-Compton ratio:
+        \begin{itemize}
+            \item Defined as the ratio of the count in the highest photopeak channel (typically of $E_\gamma=1332.5\;keV$ of Co-60) to the count in a typical channel of the Comptom continuum associated with the peak (usually sampled in the relatively flat portion just left to the rise towards the Compton edge). 
+            \item Measures the combined effects of detector energy resolution and photofraction. (A good detector has $\Delta E<0.2\%$ for $E_\gamma>1\;MeV$)
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
 \subsubsection{Varieties of Ge Detectors}
+\begin{itemize}
+    \item Anti-Compton shields:
+    \item LN$_2$-cooled HPGe detectors:
+    \item Mechanically-cooled HPGe detectors:
+    \item Composite HPGe detectors:
+    \item Point contact HPGe detectors:
+\end{itemize}
 
 \subsection{Alternative Semiconductor Detectors}
 \subsubsection{Limitations of Ge Detector Operations}

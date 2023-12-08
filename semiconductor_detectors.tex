@@ -326,11 +326,36 @@
 \end{enumerate}
 \subsubsection{Varieties of Ge Detectors}
 \begin{itemize}
-    \item Anti-Compton shields:
-    \item LN$_2$-cooled HPGe detectors:
-    \item Mechanically-cooled HPGe detectors:
-    \item Composite HPGe detectors:
-    \item Point contact HPGe detectors:
+    \item Compton Suppression Methods:
+    \begin{enumerate}
+        \item Compton rejection by coincidence:
+        \begin{itemize}
+            \item The Compton continuum is formed due to the escape of scattered photons from the active volume before they undergo photoelectric absorption.
+            \item Coincident detection of the escaping photons in a surrounding annular detector can reject events that only add to the continuum; pulses from the HPGe is rejected at an electronic gate if a coincident pulse is detected from the surrounding detector (anti-coincidence mode).
+            \item The surrounding detector must be large enough and has good enough efficiency to intercept most escaping photons. Common choices are large scintillation detectors such as NaI(Tl) and BGO (BGO preferred for its high Z and high $\rho$). 
+            \item Minimum amount of absorbing is required between the inner HPGe and the outer surrounding detector; n-type HPGe detectors are therefore preferred due to the relatively thin contacts. 
+        \end{itemize}
+        \item Sum-coincidence mode:
+        \begin{itemize}
+            \item Events are only accepted if coincidences are found in two or more independent segments of the detector. The output from all segments is then summed and recorded. 
+            \item The resulting spectrum is generally composed of only the full-energy peak and a suppressed, featureless continuum with no specific edge.
+            \item Improvements are accomplished at the expense of a reduction of the full-energy peak, since events that correspond to full-energy absorption within one segment are also rejected. 
+            \item One possible implementation is a spectrometer that consists of two concentric coaxial HPGe detectors. 
+            \end{itemize}
+        \item The pair spectrometer: 
+        \begin{itemize}
+            \item Two additional detectors placed on opposite sides of the primary detector can intercept the pair-production annihilation photons. When coincidence is found among all three detectors, the highly specific double escape events are found.
+            \item While most of the continuum is suppressed, so is the full-energy peak; counting efficiency is considerably sacrificed. 
+        \end{itemize}
+    \end{enumerate}
+    \item LN$_2$-cooled HPGe detectors:\\
+    Due to the small $0.7\;eV$ band gap of Ge, LN-cooling is required to minimize thermally-induced leakage current and the associated electronic noise. In addition, the cooling is used to minimize the noise in the first amplification step of the preamplifier (J-FET optimal operation temperature is $\sim120\;K$). 
+    \item Mechanically-cooled HPGe detectors:\\
+    Overcomes the limitations of LN, especially for field work.
+    \item Composite HPGe detectors:\\
+    Further increases detection efficiency, which consists of several closely packed crystals in the same cryostat (e.g. clovers).
+    \item Point contact HPGe detectors:\\
+    The HPGe detector is operated as ``drift'' detectors, similar to Si drift in a TPC. It has a low energy threshold, very high resolution, and multi-site event rejection capabilities. 
 \end{itemize}
 
 \subsection{Alternative Semiconductor Detectors}

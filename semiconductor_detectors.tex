@@ -360,5 +360,39 @@
 
 \subsection{Alternative Semiconductor Detectors}
 \subsubsection{Limitations of Ge Detector Operations}
-\subsubsection{Lifetime and Mobility}
-\subsubsection{Charge Collection Properties}
+\begin{itemize}
+    \item Limitations of Ge include:
+    \begin{itemize}
+        \item LN$_2$ cooling requirements
+        \item Limited Z (32) and density (5.3 g/cm$^3$)
+        \item High cost (expensive purification) 
+    \end{itemize}
+    \item The ideal alternative should have the following properties:
+    \begin{itemize}
+        \item Large active volume
+        \item High charge carrier mobilities
+        \item Long charge carrier lifetimes
+        \item High Z, high density
+        \item Operable at room temperature
+        \item Small band gap for good resolution (small ionization energy)
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Lifetime and Mobility of Alternatives}
+\begin{itemize}
+    \item Alternatives include: CdTe, HgI$_2$, CdZnTe (compound semiconductors)
+    \item Although these materials are of higher Z and density, they have very limited charge carrier mobilities ($\mu$) and lifetimes ($\tau$).
+    \item Position-dependant charge collection is described by Hecht's relation:
+    \begin{itemize}
+        \item[] $Q=eN\left\{\frac{\nu_h\tau_h}{d}\left[1-\exp\left(\frac{-x}{\nu_h\tau_h}\right)\right]+\frac{\nu_e\tau_e}{d}\left[1-\exp\left(\frac{x-d}{\nu_e\tau_e}\right)\right]\right\}$
+        \item[] , where $\nu$ is charge carrier velocity, and $d$ is the detector width.
+        \item[] $\Delta x=\nu\tau=\mu\tau E$
+        \item[] The carrier extraction factor (CEF) is defined as $\frac{\nu\tau}{d}$, and good energy resolution requires CEF $>50$ for both electrons and holes.
+    \end{itemize}
+    \item The hole extraction factor is poor for both HgI$_2$ and CdTe detectors.
+\end{itemize}
+\subsubsection{Co-Planar Grids and Pixelization}
+\begin{itemize}
+    \item To minimize the impact of the limiting hole transport properties, co-planar grid segmentation or pixelization can be implemented. 
+    \item In the co-planar grid implementation, two interwoven strips structures are independently read out and the signals are subtracted, leaving only the electron component. 
+\end{itemize}

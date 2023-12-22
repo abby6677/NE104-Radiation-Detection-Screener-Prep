@@ -18,7 +18,7 @@
     \begin{itemize}
         \item (n,p):
         \begin{itemize}
-            \item[] n $+$ $^3$He $\rightarrow$ p $+$ $^3$H, Q $=$ 0.765 MeV
+            \item[] n $+$ $^3$He $\rightarrow$ p $+$ $^3$H, Q $=$ 0.764 MeV
         \end{itemize}
         \item (n,$\alpha$):
         \begin{itemize}
@@ -110,22 +110,113 @@
 \end{itemize}
 
 \subsection{Fast Neutron Detection}
-
-
+There are 2 approaches to detect fast neutrons:
+\begin{enumerate}
+    \item Neutron moderation followed by neutron capture, only providing count rates (neutron flux)
+    \item Elastic scattering from protons at high energies
+    \begin{itemize}
+        \item Measure ``edge'' of maximum energy in a single scatter
+        \item Observe recoils for time-of-flight (ToF), enabling neutron energy measurements
+        \item Measure total energy base on multiple scatters
+        \item Combine energy \& ToF measurements for a scatter camera
+    \end{itemize}
+\end{enumerate}
 \subsubsection{Counters Based on Moderation}
-
+\begin{itemize}
+    \item Neutron moderated in hydrogenous materials such as PE or paraffin before reaching a conventional slow neutron detector to increase efficiency (spherical material with detector at the center)
+    \item Optimum thickness of moderator is between a few cm to 10's of cm for neutron energies of keV to MeV
+    \item While thicker moderators would slow neutrons more and increase cross sections, the thicker the moderator is, the probability of an incident fast neutron ever reaching the detector inevitably decreases. 
+    \item The neutron energy spectra can be obtained by measuring count rates for different sphere diameters and unfolding the relative responses (Bonner spheres). 
+    \item A 12'' diameter Bonner sphere with a LiI(Eu) scintillator at its center has a coincidentally similar response curve as neutron dose in tissue, allowing the determination of does equivalent due to neutrons with an unknown/variable neturon spectrum over a large range of neutron energies. 
+\end{itemize}
 
 \subsubsection{Fast Neutron Scattering}
-
+\begin{itemize}
+    \item The most common detection method for fast neutrons is by elastic scattering of neutrons on light nuclei (e.g. $^1$H), producing a recoiling nucleus (proton) that can be easily detected. 
+    \item Energy deposited in each interaction is given by
+    \begin{itemize}
+        \item[] $\frac{E_R}{E_n}=\frac{4A}{(1+A)^2}\cos^2\theta_\text{lab}$
+        \item[] $E_{R,\text{MAX}}=\frac{4A}{(1+A)^2}E_n$
+    \end{itemize}
+    \item By measuring the energy edge of the recoiling nucleus, neutron energy can be obtained. 
+\end{itemize}
 
 \subsubsection{The He-3 Proportional Counter}
-
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/fast_neutrons_3He.png}
+    \caption{Idealized fast neutron spectrum from a $^3$He detector.}
+    \label{fig:fast_neutrons_3He}
+\end{figure}
+\begin{itemize}
+    \item n $+$ $^3$He $\rightarrow$ p $+$ $^3$H, Q $=$ 764 keV
+    \item Ignoring the wall effect, the idealized fast neutron spectrum is shown in figure~\ref{fig:fast_neutrons_3He}. Three distinct features should be seen:
+    \begin{enumerate}
+        \item The full energy peak corresponding to all the (n,p) reactions induced directly by the incident neutrons. The peak occurs at the energy of the Q-value plus the neutron energy. 
+        \item A continuum from elastic scattering of the enutron and a partial transfer of its energy to a recoiling He nucleus. The maximum energy of the continuum can be calculated with the equation of $E_{Rm\text{MAX}}$ given above; it is 75\% of the incoming neutron energy. 
+        \item An epithermal peak corresponding to the detection of incident neutrons that have been reduced to the thermal range by moderation in external materials. It occurs at the Q-value. 
+    \end{enumerate}
+\end{itemize}
 
 \subsubsection{Other Fast Neutron Detectors}
-
-
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/position_fast_neutron.png}
+    \caption{GSI-LAND (left) and neutron scatter camera (right).}
+    \label{fig:position_fast_neutron}
+\end{figure}
+\begin{itemize}
+    \item Position-sensitive fast neutron detectors (figure~\ref{fig:position_fast_neutron} (left)):\\
+    2D array of fast ($\sim$ns decay time) plastic scintillators providing 4$\pi$ coverage to measure neutrons energies via ToF (measurement of time difference between particle tracking detector and neutron detector).
+    \item Neutron scatter camera (figure~\ref{fig:position_fast_neutron} (right)):\\
+    With liquid, Stilbene, of plastic scintillator arrays or other 3D position-sensitive detectors; neutron-gamma PSD required.
+\end{itemize}
 \subsubsection{Pulse-Shape Discrimination}
-
-
+\begin{itemize}
+    \item In figure~\ref{fig:organic_scintillator_psd}, we've seen PSD capabilities of organic scintillators. 
+    \item With the advantages of being cheap, robust, and of any shape over Stilbene (crystal) and liquid scintillators, plastic scintillators can be used for PSD as well. 
+    \item $^6$Li can be added for thermal neutron detection.
+    \item Figure~\ref{fig:decay_time_plastic_scintillator} and figure~\ref{fig:PSD_plastic_scintillator} show the PSD capabilities of plastic scintillators.
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/decay_time_plastic_scintillator.png}
+    \caption{Decay time dependence on particle type in plastic scintillators.}
+    \label{fig:decay_time_plastic_scintillator}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/PSD_plastic_scintillator.png}
+    \caption{PSD in plastic scintillators (left) and liquid scintillators (right). Figure-of-merit given by $S/(\Delta n+\Delta\gamma)$.}
+    \label{fig:PSD_plastic_scintillator}
+\end{figure}
 \subsection{Miscellaneous Neutron Detectors}
 \subsubsection{Nuclear Reactor Instrumentation}
+\begin{itemize}
+    \item Thermal neutron detection capabilities (obviously) required
+    \item Detection systems have to withstand extreme heat and pressure, high radiation fields (neutron and gammas), and provide long-term stability and a large range of sensitivity.
+    \item There are 2 categories of detection systems:
+    \begin{enumerate}
+        \item In-core, current mode:
+        \begin{itemize}
+            \item Located within narrow coolant channels in the core to provide flux shape within the core
+            \item Rate of $>10^7$ 1/s, up to rates causing unacceptable recombination effects
+            \item No discrimination against gammas, except signal amplitude current fluctuations (Campbelling technique of fission counters)
+            \item Compensated ionization chambers (CIC) can be used to subtract the gamma-ray signal component, with the setup shown in figure~\ref{fig:compensated_ion_chamber}. 
+            \item Self-powered detectors (SPD) can directly measure currents due to beta electrons or gamma-induced electrons without an external applied voltage.
+            \item Fission chambers can be tailored for any power range. They are small, $^{235}$U-line Ar-filled gas detectors, with fertile $^{234}$U added to increase longevity (regenerative chambers). Buildup of fission products within the chamber, which contributes significantly to current signals, leads to memory effects. 
+        \end{itemize}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=0.35\textwidth]{images/compensated_ion_chamber.png}
+            \caption{Configuration of a compensated ionization chamber. The boron-lined ion chamber is sensitive to both neutrons and gammas, and the chamber without boron lining is sensitive to only gammas. The difference in the currents gives the neutron-only component.}
+            \label{fig:compensated_ion_chamber}
+        \end{figure}
+        \item Out-of-core, pulse-mode:
+        \begin{itemize}
+            \item Located outside the core to provide integrated neutron flux over the entire core
+            \item Rate $<10^5\sim10^7$ 1/s
+            \item Proportional detectors with $\gamma$-discrimination
+        \end{itemize}
+    \end{enumerate}
+\end{itemize}
